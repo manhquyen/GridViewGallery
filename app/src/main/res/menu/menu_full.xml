@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/about"
+        android:title="@string/about_app"/>
+    <item android:id="@+id/infoinView"
+        android:title="@string/about_picture"/>
+    <item android:id="@+id/set_home"
+        android:title="@string/set_home"/>
+    <item
+        android:icon="@android:drawable/ic_menu_share"
+        app:showAsAction="ifRoom"
+        android:title="share"
+        android:id="@+id/shareInView"/>
+</menu>

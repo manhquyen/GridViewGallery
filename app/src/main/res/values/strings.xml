@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Thư Viện</string>
+    <string name="picture_view">Hình ảnh chi tiết</string>
+    <string name="album_view">Quản lý Album</string>
+    <string name="list_pic_in_album">Hình ảnh trong Album</string>
+    <string name="title_activity_fullscreen">Hình ảnh chi tiết</string>
+    <string name="dummy_button">Get Infomations</string>
+    <string name="dummy_content">ImageView</string>
+    <string name="facebook_app_id">184293822093520</string>
+    <string name="title_activity_gallery_view">galleryView</string>
+    <string name="set_home">Cài làm màn hình chờ</string>
+    <string name="share_fb">Chia sẻ lên Facebook</string>
+    <string name="del_pic">Xóa hình ảnh này</string>
+    <string name="about_app">Thông tin ứng dụng</string>
+    <string name="about_picture">Thông tin ảnh</string>
+    <string name="delete_album">Xoa album da chon </string>
+    <string name="delete_all_album">Xoa toan bo album </string>
+    <string name="add_album">Them album moi</string>
+    <string name="album_control">Quản Lý Album</string>
+    <string name="new_picture">Mở máy ảnh</string>
+</resources>
