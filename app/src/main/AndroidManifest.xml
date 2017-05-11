@@ -54,6 +54,8 @@
             android:label="@string/list_pic_in_album">
         </activity>
         <activity android:name=".AddPhotoAlbum"></activity>
+        <activity android:name=".AlbumPicture2"></activity>
+        <activity android:name=".SlideShow"></activity>
     </application>
 
 </manifest>

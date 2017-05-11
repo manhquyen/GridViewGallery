@@ -80,7 +80,7 @@ public class Album extends AppCompatActivity {
                 }
                 else{
                     String path = Album.systemPath+"/"+mArrayList.get(position)+"/";
-                    Intent intent = new Intent(Album.this,AlbumPicture.class);
+                    Intent intent = new Intent(Album.this, AlbumPicture2.class);
                     intent.putExtra("folderPath",path);
                     startActivity(intent);
                     Toast.makeText(getApplicationContext(),path,Toast.LENGTH_SHORT).show();

@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private GridView gridview;
     private int TAKE_PHOTO_CODE = 0;
     public static int count;
-    final String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/New Folder/camera";
+    String file;
+    final String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/";
     final String cameraFolder = Environment.getExternalStorageDirectory().getAbsolutePath()+"/DCIM/Camera/";
     private CallbackManager callbackManager;
     private LoginManager manager;
@@ -208,6 +209,10 @@ public class MainActivity extends AppCompatActivity {
                 openCamera();
                 //printKeyHash();
                 break;
+            case R.id.slide:
+                Intent intent = new Intent(MainActivity.this, SlideShow.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }
@@ -222,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         count = random.nextInt(100000);
         // here,counter will be incremented each time,and the picture taken by camera will be stored as 1.jpg,2.jpg and likewise.
         //count++;
-        String file = dir + count + ".jpg";
+        file = dir + count + ".jpg";
         File newfile = new File(file);
         try {
             newfile.createNewFile();
@@ -242,6 +247,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == TAKE_PHOTO_CODE && resultCode == RESULT_OK) {
             Log.d("CameraDemo", "Pic saved");
+            imageAdapter.add(file);
+            imageAdapter.notifyDataSetChanged();
 
 
         }else

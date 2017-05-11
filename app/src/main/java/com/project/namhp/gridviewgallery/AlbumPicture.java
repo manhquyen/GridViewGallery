@@ -18,17 +18,23 @@ import android.widget.Toast;
 import com.project.namhp.Ultil.AboutUltil;
 import com.project.namhp.adapter.ImageAdapter;
 import com.project.namhp.control.HomeControl;
+import com.project.namhp.provider.DatabasePicture;
+import com.project.namhp.provider.MyDatabase;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class AlbumPicture extends AppCompatActivity {
     private GridView mGridView;
+    private DatabasePicture DatabasePicture;
+    private ArrayList<String> mArrayList;
     private static ImageAdapter mImageAdapter;
     private String folderPath;
     private String location;
     public String str;
+    Random random = new Random();
     public static final  int RESULT_CODE =1995;
 
     private int TAKE_PHOTO_CODE = 0;
@@ -37,12 +43,16 @@ public class AlbumPicture extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_picture);
         Bundle mBundle = getIntent().getExtras();
+        DatabasePicture = new DatabasePicture(this);
+        DatabasePicture.open();
+        mArrayList = DatabasePicture.getData();
+        DatabasePicture.close();
         location = mBundle.getString("position");
         folderPath = mBundle.getString("folderPath");
         mGridView = (GridView) findViewById(R.id.gridview_album);
         mImageAdapter = new ImageAdapter(this);
         File targetDirector = new File(folderPath);
-        //addphoto();
+        addphoto();
         File[] files = targetDirector.listFiles();
         for (File file : files) {
             mImageAdapter.add(file.getAbsolutePath());
@@ -97,8 +107,21 @@ public class AlbumPicture extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     private void addphoto() {
-        mImageAdapter.add(location);
+        for (String file : mArrayList) {
+            mImageAdapter.add(file);
+            Toast.makeText(AlbumPicture.this, "vai lua ", Toast.LENGTH_SHORT).show();
+        }
         mImageAdapter.notifyDataSetChanged();
+    }
+
+    private void creatPicture(String s) {
+        DatabasePicture.open();
+        int i = random.nextInt(10000);
+        DatabasePicture.createData(String.valueOf(i), s);
+        //mArrayList.add(s);
+        //mListViewAdapter.notifyDataSetChanged();
+        DatabasePicture.close();
+
     }
     private void openCamera() {
         //final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/";
@@ -133,8 +156,9 @@ public class AlbumPicture extends AppCompatActivity {
                 str = data.getStringExtra(AddPhotoAlbum.RESULT_AB);
                 //str= String.valueOf(data.getIntExtra(AddPhotoAlbum.RESULT_AB,1));
                 mImageAdapter.add(str);
+                creatPicture(str);
                 mImageAdapter.notifyDataSetChanged();
-                Toast.makeText(AlbumPicture.this, str, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AlbumPicture.this, str, Toast.LENGTH_SHORT).show();
             }
         }
     }

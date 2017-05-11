@@ -46,7 +46,7 @@ public class AddPhotoAlbum extends AppCompatActivity {
                 setResult(RESULT_OK,intent);
                 finish();
 
-                Toast.makeText(getApplicationContext(),"them vao album "+ str,Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(),"them vao album "+ str,Toast.LENGTH_SHORT).show();
             }
         });
         File targetDirector = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/DCIM/Camera/");

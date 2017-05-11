@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -65,7 +66,7 @@ public class MyDatabase {
         Cursor c = db.query(TABLE_ACCOUNT, columns, null, null, null, null, null);
         /*if(c==null)
             Log.v("Cursor", "C is NULL");*/
-        String result="";
+        String result = "213";
         //getColumnIndex(COLUMN_ID); là lấy chỉ số, vị trí của cột COLUMN_ID ...
         int id = c.getColumnIndex(COLUMN_ID);
         //int iN = c.getColumnIndex(COLUMN_ACC);
@@ -75,9 +76,11 @@ public class MyDatabase {
         //Vòng lặp lấy dữ liệu của con trỏ
         for(c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
             mArrayList.add(c.getString(iNames));
+            //Log.v("data base",c.getString(iNames));
         }
+
         c.close();
-        //Log.v("Result", result);
+        Log.v("Result", result);
         return mArrayList;
     }
     public int deleteAcc(String acc) {

@@ -13,5 +13,9 @@
         android:title="@string/new_picture"
         app:showAsAction="ifRoom"
         android:icon="@android:drawable/ic_menu_camera"/>
+    <item
+        android:id="@+id/slide"
+        android:title="Slide show" />
+
 
 </menu>
